@@ -127,7 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="C867-Scripting-and-Programming-Applications.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="roster.cpp" />
+    <ClCompile Include="student.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="roster.h" />
+    <ClInclude Include="student.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C867-Scripting-and-Programming-Applications.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
