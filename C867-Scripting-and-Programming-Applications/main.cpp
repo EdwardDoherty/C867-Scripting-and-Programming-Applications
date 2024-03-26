@@ -15,47 +15,51 @@ Specific data-related output will be directed to the console.
 
 
 #include <iostream>
-using namespace std;
+#include "student.h"
+#include "roster.h"
+
 
 int main()
 {
-    string courseTitle = "C867 - Scripting and Programming Applications";
-    string programmingLanguage = "C++";
-    string WGUstudentID = "011010291";
-    string WGUstudentName = "Joseph 'Edward' Doherty";
+    std::string courseTitle = "C867 - Scripting and Programming Applications";
+    std::string programmingLanguage = "C++";
+    std::string WGUstudentID = "011010291";
+    std::string WGUstudentName = "Joseph 'Edward' Doherty";
 
-    cout << "Course: " + courseTitle + 
-        "\n Programming Language Used: " + programmingLanguage + 
-        "\n WGU Student ID: " + WGUstudentID + 
-        "\n WGU Student Name: " + WGUstudentName;
+    std::cout << "Course: " << courseTitle <<
+        "\n Programming Language Used: " << programmingLanguage <<
+        "\n WGU Student ID: " << WGUstudentID <<
+        "\n WGU Student Name: " << WGUstudentName;
 
-    const string studentData[] =
+
+    // A. Modify the “studentData Table” to include your personal information as the last item.
+    const std::string studentData[] =
     {
         "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
         "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
         "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
         "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
         "A5,Joseph,Doherty,jdohe23@gmail.com,27,16,2,33,SOFTWARE"
-    }
+    };
 
 
-    //classRoster.printAll();
+        //classRoster.printAll();
 
-    //classRoster.printInvalidEmails();
+        //classRoster.printInvalidEmails();
 
-    // loop through classRosterArray and for each element:
-        //classRoster.printAverageDaysInCourse(/*current_object's student id*/);
-        // NOTE: For the current_objects's studentID, use an accessor (getter) for the classRosterArray to access the studentID
+        // loop through classRosterArray and for each element:
+            //classRoster.printAverageDaysInCourse(/*current_object's student id*/);
+            // NOTE: For the current_objects's studentID, use an accessor (getter) for the classRosterArray to access the studentID
 
-    //classRoster.printByDegreeProgram(SOFTWARE);
-    //classRoster.remove("A3");
-    //classRoster.printerAll();
-    //classRoster.remove("A3");
-    // expected: the above line should print a message saying such a student with this ID was not found.
+        //classRoster.printByDegreeProgram(SOFTWARE);
+        //classRoster.remove("A3");
+        //classRoster.printerAll();
+        //classRoster.remove("A3");
+        // expected: the above line should print a message saying such a student with this ID was not found.
 
-    // Implement the destructor to release the memory that was allocated dynamically in Roster
+        // Implement the destructor to release the memory that was allocated dynamically in Roster
 
-}
+};
 
 
 
