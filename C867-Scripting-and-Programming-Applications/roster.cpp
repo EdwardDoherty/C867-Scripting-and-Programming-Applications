@@ -1,5 +1,10 @@
+
+#include <iostream>
+#include "student.h"
+#include "degree.h"
 #include "roster.h"
 
+/*
 // E.1 array of pointers, classRosterArray, to hold the data provided in the "studentData Table"
 
 // E.2 Create a student object for each student in the data table and populare classRosterArray
@@ -27,3 +32,48 @@
 
 // f. public void printByDegreeProgram(DegreeProgram degreeProgram)
 	// Prints out student information for a degree program specified by an enumerated type
+
+	*/
+
+// Constructor
+Roster::Roster() {
+
+};
+
+// Destructor
+Roster::~Roster() {
+
+};
+
+void Roster::add(
+	std::string studentID,
+	std::string firstName,
+	std::string lastName,
+	std::string emailAddress,
+	int age,
+	int daysInCourse1,
+	int daysInCourse2,
+	int daysInCourse3,
+	DegreeProgram degreeProgram) {
+	
+}
+
+void Roster::remove(std::string studentID) {
+
+};
+
+void Roster::printAll() {
+
+};
+
+void Roster::printAverageDaysInCourse(std::string studentID) {
+
+};
+
+void Roster::printInvalidEmails() {
+
+};
+
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+
+};
