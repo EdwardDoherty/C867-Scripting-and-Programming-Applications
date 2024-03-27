@@ -40,11 +40,17 @@
 // Constructor
 Roster::Roster(int rosterSize) {
 	Roster::rosterSize = rosterSize;
-	Roster::parse();
+
+	for (int i = 0; i < rosterSize; i++) {
+		classRosterArray[i] = nullptr;
+	}
 };
 
 Roster::~Roster() {
-	return;
+	for (int i = 0; i < rosterSize; i++) {
+		delete classRosterArray[i];
+		classRosterArray[i] = nullptr;
+	}
 };
 
 void Roster::parse() {
@@ -103,12 +109,37 @@ void Roster::add(
 	int daysInCourse3,
 	DegreeProgram degreeProgram) {
 
-
+	classRosterArray[rosterSize] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse1, daysInCourse2, daysInCourse3, degreeProgram);
 
 };
 
 void Roster::remove(std::string studentID) {
 
+	bool studentRemoved = false;
+		
+	for (int i = 0; i < rosterSize; i++) {
+
+		if (classRosterArray[i] == nullptr) {
+			continue;
+		}
+		else if (classRosterArray[i]->getStudentID() == studentID) {
+
+			classRosterArray[i] = nullptr;
+			studentRemoved = true;
+			//break;
+		}
+	};
+
+	if (studentRemoved) {
+
+		std::cout << "Success: Student ID " << studentID << " was removed." << std::endl;
+		std::cout << std::endl;
+	}
+	else {
+
+		std::cout << "Error: Student ID " << studentID << " was not found." << std::endl;
+		std::cout << std::endl;
+	};
 };
 
 void Roster::printAll() {
@@ -116,24 +147,79 @@ void Roster::printAll() {
 	// Loop throught students and call their print() function
 	for (int student = 0; student < rosterSize; student++) {
 
-		classRosterArray[student]->print();
+		if (classRosterArray[student] != nullptr) {
+			classRosterArray[student]->print();
+		}
 	};
 };
 
 void Roster::printAverageDaysInCourse(std::string studentID) {
+	
+	for (int i = 0; i < rosterSize; i++) {
 
+		if (classRosterArray[i] == nullptr) {
+			continue;
+		}
+		else if(classRosterArray[i]->getStudentID() == studentID) {
+
+			int* courseArray = classRosterArray[i]->getDaysPerCourseArray();
+
+			int totalDays = 0;
+			int arrayLength = 3;
+
+			for (int i = 0; i < arrayLength; i++) {
+				totalDays = totalDays + courseArray[i];
+			}
+			
+			std::cout << "Average days per course: Student #: " << studentID << " - " << totalDays / arrayLength << std::endl;
+			std::cout << std::endl;
+			
+
+		}
+	}
 };
 
 void Roster::printInvalidEmails() {
 
+	for (int i = 0; i < rosterSize; i++) {
+
+		if (classRosterArray[i] != nullptr) {
+
+			std::string email = classRosterArray[i]->getEmailAddress();
+
+			if ((email.find(" ") != std::string::npos) || 
+				(email.find(".") == std::string::npos) || 
+				(email.find("@") == std::string::npos)) {
+
+				std::cout << "INVALID EMAIL: " << email << std::endl;
+			}
+
+		}
+	}
+
+	std::cout << std::endl;
 };
 
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+	
+	std::cout << "Students enrolled in " << castDegreeProgramToString(degreeProgram) << ": " << std::endl;
+
+	for (int i = 0; i < rosterSize; i++) {
+
+		if (classRosterArray[i] != nullptr) {
+
+			if (classRosterArray[i]->getDegreeProgram() == degreeProgram) {
+
+				classRosterArray[i]->print();
+			}
+		}
+	}
+
+	std::cout << std::endl;
 
 };
 
-// Helper functions
-	// Cast string into degreeProgram
+// Cast string into degreeProgram
 DegreeProgram Roster::castToDegreeProgram(std::string degreeString) {
 
 	if (degreeString == "SECURITY") {
