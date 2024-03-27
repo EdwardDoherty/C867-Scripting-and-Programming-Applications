@@ -50,11 +50,11 @@ Roster::~Roster() {
 void Roster::parse() {
 
 	// Parse each student, create Student objects and place them into classRosterArray
-	for (int student = 0; student < (sizeof(studentData) / sizeof(std::string)); student++) {
+	for (int student = 0; student < rosterSize; student++) {
 
+		// Parse the data of an individual student
 		classRosterArray[student] = Roster::parseLine(studentData[student]);
 
-		classRosterArray[student]->print();
 	};
 };
 
@@ -114,7 +114,7 @@ void Roster::remove(std::string studentID) {
 void Roster::printAll() {
 
 	// Loop throught students and call their print() function
-	for (int student = 0; student < (sizeof(studentData) / sizeof(std::string)); student++) {
+	for (int student = 0; student < rosterSize; student++) {
 
 		classRosterArray[student]->print();
 	};

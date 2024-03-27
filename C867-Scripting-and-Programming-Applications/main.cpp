@@ -21,6 +21,7 @@ Specific data-related output will be directed to the console.
 
 int main()
 {
+    // F.1 Print out to the screen, via your application, the course title, the programming language used, your WGU student ID, and your name.
     std::string courseTitle = "C867 - Scripting and Programming Applications";
     std::string programmingLanguage = "C++";
     std::string WGUstudentID = "011010291";
@@ -32,7 +33,8 @@ int main()
         "\n WGU Student Name: " << WGUstudentName << std::endl;
 
 
-    Roster* studentRoster = new Roster(5);
+    Roster* classRoster = new Roster(5);
+
 
 
         //classRoster.printAll();
