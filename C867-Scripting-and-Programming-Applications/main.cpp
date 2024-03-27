@@ -28,11 +28,11 @@ int main()
     std::string WGUstudentName = "Joseph 'Edward' Doherty";
 
     std::cout << "Course: " << courseTitle <<
-        "\n Programming Language Used: " << programmingLanguage <<
-        "\n WGU Student ID: " << WGUstudentID <<
-        "\n WGU Student Name: " << WGUstudentName << std::endl;
+        "   Programming Language Used: " << programmingLanguage <<
+        "   WGU Student ID: " << WGUstudentID <<
+        "   WGU Student Name: " << WGUstudentName << std::endl;
     std::cout << std::endl;
-    std::cout << "--------------------------------------------" << std::endl;
+    std::cout << std::endl;
 
     // F.2 Create an instance of the Roster class called classRoster.
     Roster* classRoster = new Roster(5);
@@ -41,68 +41,34 @@ int main()
     classRoster->parse();
     
     // F.4 printAll()
-    std::cout << "PRINT ALL: " << std::endl;
     classRoster->printAll();
-    std::cout << "--------------------------------------------" << std::endl;
 
     // F.4 printInvalidEmails()
-    std::cout << "PRINT INVALID EMAILS: " << std::endl;
     classRoster->printInvalidEmails();
-    std::cout << "--------------------------------------------" << std::endl;
 
     // loop through classRosterArray and for each element printAverageDaysInCourse
-    std::cout << "PRINT AVERAGE DAYS IN COURSE: " << std::endl;
     for (int i = 0; i < 5; i++) {
         classRoster->printAverageDaysInCourse(classRoster->classRosterArray[i]->getStudentID());
         // NOTE: For the current_objects's studentID, use an accessor (getter) for the classRosterArray to access the studentID
     };
-    std::cout << "--------------------------------------------" << std::endl;
+    std::cout << std::endl;
     
-    std::cout << "PRINT SOFTWARE STUDENTS: " << std::endl;
     classRoster->printByDegreeProgram(SOFTWARE);
-    std::cout << "--------------------------------------------" << std::endl;
 
-    std::cout << "REMOVE STUDENTID A3: " << std::endl;
     classRoster->remove("A3");
-    std::cout << "--------------------------------------------" << std::endl;
 
-    std::cout << "PRINT ALL: " << std::endl;
     classRoster->printAll();
-    std::cout << "--------------------------------------------" << std::endl;
 
-    std::cout << "REMOVE STUDENTID A3 (FAILURE): " << std::endl;
     classRoster->remove("A3");
-    std::cout << "--------------------------------------------" << std::endl;
 
-    // Implement the destructor to release the memory that was allocated dynamically in Roster
+    // Demonstrate add() functionality. This wasn't in the requirements but I felt it was important
+    classRoster->add("A6", "New", "Student", "email@email.com", 27, 10, 10, 10, NETWORK);
+
+    classRoster->printByDegreeProgram(NETWORK);
+
+    // F.5: Implement the destructor to release the memory that was allocated dynamically in Roster
     classRoster->~Roster();
     delete classRoster;
 
 };
 
-
-
-
-
-
-
-
-
-
-
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
-
-// string input;
-// cout << "Hello World!\n";
-// cin >> input;
-// cout << "You entered: " << input << "!";

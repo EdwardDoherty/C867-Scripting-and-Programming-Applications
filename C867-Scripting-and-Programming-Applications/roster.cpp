@@ -6,36 +6,6 @@
 #include "degree.h"
 #include "roster.h"
 
-/*
-// E.1 array of pointers, classRosterArray, to hold the data provided in the "studentData Table"
-
-// E.2 Create a student object for each student in the data table and populare classRosterArray
-	// Parse each set of data identified in the "studentData Table"
-	// add each student object to classRosterArray
-
-// E.3 Define the following functions:
-// a. public void add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse 1, int daysInCourse2, int daysInCourse3, DegreeProgram degreeProgram)
-	// Sets the instance variables from the student class and updates the roster
-
-// b. public void remove(string studentID)
-	// removes students from the roster by studentID. If studentID doesn't exist, print an error message indicating that the student was not found.
-
-// c. public void printAll()
-	// prints a complete tab-separated list of student data in the provided format:
-		// A1 [tab] First Name: John [tab] Last Name: Smith [tab] Age: 20 [tab]daysInCourse: {35, 40, 55} Degree Program: Security
-	// The printAll() function should loop through all the students in classRosterArray and call the print() function for each student
-
-// d. public void printAverageDaysInCourse(string studentID)
-	// correctly prints a student's average number of days in the three courses.The student is identified by the studentID param
-
-// e. public void printInvalidEmails()
-	// verifies student email addresses and displays all invalid email addresses to the user
-	// A valid email should include an @ symbol and a . and should not include a space
-
-// f. public void printByDegreeProgram(DegreeProgram degreeProgram)
-	// Prints out student information for a degree program specified by an enumerated type
-
-	*/
 
 // Constructor
 Roster::Roster(int rosterSize) {
@@ -46,12 +16,14 @@ Roster::Roster(int rosterSize) {
 	}
 };
 
+
 Roster::~Roster() {
 	for (int i = 0; i < rosterSize; i++) {
 		delete classRosterArray[i];
 		classRosterArray[i] = nullptr;
 	}
 };
+
 
 void Roster::parse() {
 
@@ -64,11 +36,12 @@ void Roster::parse() {
 	};
 };
 
+
 Student* Roster::parseLine(std::string dataLine) {
 
 	std::string delimiter = ","; // Set the delimiter you'd like to use to parse the data
-	std::string studentArray[9]; // Contains the parsed information for each student, which is then fed into the class constructor at the bottom of this loop
-	std::size_t lastDelimiter = 0; // Track the previous delimiter end point
+	std::string studentArray[9];
+	std::size_t lastDelimiter = 0; // Track the previous delimiter end point so we don't have to destroy the string
 	int counter = 0;
 
 	// Parse student info string
@@ -77,7 +50,7 @@ Student* Roster::parseLine(std::string dataLine) {
 		// Add the student's data to the array
 		studentArray[counter] = dataLine.substr(lastDelimiter, dataLine.find(delimiter, lastDelimiter) - lastDelimiter);
 
-		// Locate and save the delimiter for future loop
+		// Locate and save the delimiter for next loop
 		lastDelimiter = dataLine.find(delimiter, lastDelimiter) + delimiter.length();
 
 		counter++;
@@ -98,6 +71,7 @@ Student* Roster::parseLine(std::string dataLine) {
 	);
 };
 
+
 void Roster::add(
 	std::string studentID,
 	std::string firstName,
@@ -111,9 +85,14 @@ void Roster::add(
 
 	classRosterArray[rosterSize] = new Student(studentID, firstName, lastName, emailAddress, age, daysInCourse1, daysInCourse2, daysInCourse3, degreeProgram);
 
+	std::cout << "Student ID #" << studentID << " successfully added to roster" << std::endl;
+	std::cout << std::endl;
 };
 
+
 void Roster::remove(std::string studentID) {
+
+	std::cout << "Attempting to remove Student ID:  " << studentID << std::endl;
 
 	bool studentRemoved = false;
 		
@@ -126,7 +105,6 @@ void Roster::remove(std::string studentID) {
 
 			classRosterArray[i] = nullptr;
 			studentRemoved = true;
-			//break;
 		}
 	};
 
@@ -142,16 +120,21 @@ void Roster::remove(std::string studentID) {
 	};
 };
 
+
 void Roster::printAll() {
 
-	// Loop throught students and call their print() function
+	std::cout << "All students in roster: " << std::endl;
+
 	for (int student = 0; student < rosterSize; student++) {
 
 		if (classRosterArray[student] != nullptr) {
 			classRosterArray[student]->print();
 		}
 	};
+
+	std::cout << std::endl;
 };
+
 
 void Roster::printAverageDaysInCourse(std::string studentID) {
 	
@@ -171,13 +154,11 @@ void Roster::printAverageDaysInCourse(std::string studentID) {
 				totalDays = totalDays + courseArray[i];
 			}
 			
-			std::cout << "Average days per course: Student #: " << studentID << " - " << totalDays / arrayLength << std::endl;
-			std::cout << std::endl;
-			
-
+			std::cout << "Average days per course: Student #" << studentID << ": " << totalDays / arrayLength << std::endl;
 		}
 	}
 };
+
 
 void Roster::printInvalidEmails() {
 
@@ -200,6 +181,7 @@ void Roster::printInvalidEmails() {
 	std::cout << std::endl;
 };
 
+
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 	
 	std::cout << "Students enrolled in " << castDegreeProgramToString(degreeProgram) << ": " << std::endl;
@@ -219,6 +201,8 @@ void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 
 };
 
+
+
 // Cast string into degreeProgram
 DegreeProgram Roster::castToDegreeProgram(std::string degreeString) {
 
@@ -236,6 +220,7 @@ DegreeProgram Roster::castToDegreeProgram(std::string degreeString) {
 	}
 
 };
+
 
 // Cast Degree Program to a string
 std::string Roster::castDegreeProgramToString(DegreeProgram degreeEnum) {

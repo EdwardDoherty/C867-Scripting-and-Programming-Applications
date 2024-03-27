@@ -95,13 +95,14 @@
 	// Print student info
 	void Student::print() {
 		
-		std::cout << "StudentID: " << studentID <<
-			"\n First Name: " << firstName <<
-			"\n Last Name: " << lastName <<
-			"\n Email Address: " << emailAddress <<
-			"\n Age: " << age <<
-			"\n Days in Course: " << daysPerCourseArray[0] << ", " << daysPerCourseArray[1] << ", " << daysPerCourseArray[2] <<
-			"\n Degree Program: " << Roster::castDegreeProgramToString(degreeProgram) << std::endl;
+		std::cout <<
+			"StudentID:	" << studentID <<
+			"	First Name:	" << firstName <<
+			"	Last Name:	" << lastName <<
+			"	Email Address:	" << emailAddress <<
+			"	Age:	" << age <<
+			"	Days in Course:	" << daysPerCourseArray[0] << ", " << daysPerCourseArray[1] << ", " << daysPerCourseArray[2] <<
+			"	Degree Program:	" << Roster::castDegreeProgramToString(degreeProgram) << std::endl;
 
-		std::cout << std::endl;
+		//std::cout << std::endl;
 	};
