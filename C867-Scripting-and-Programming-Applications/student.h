@@ -37,9 +37,6 @@ public:
 		DegreeProgram degreeProg
 	);
 
-	// Destructor
-	~Student();
-
 	// Print specific student info
 	void print();
 
