@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <string>
+#include <map>
 #include "student.h"
 #include "degree.h"
 #include "roster.h"
@@ -38,11 +40,48 @@
 // Constructor
 Roster::Roster() {
 
+	// Parse each student, create Student objects and place them into classRosterArray
+	for (int student = 0; student < (sizeof(studentData) / sizeof(std::string)); student++) {
+		
+		std::string delimiter = ","; // Set the delimiter you'd like to use to parse the data
+		std::string studentArray[9]; // Contains the parsed information for each student, which is then fed into the class constructor at the bottom of this loop
+		std::size_t lastDelimiter = 0; // Track the previous delimiter end point
+		int counter = 0;
+
+		// Parse student info string
+		while((studentData[student].find(delimiter, lastDelimiter + delimiter.length())) != std::string::npos) {
+
+			// Add the student's data to the array
+			studentArray[counter] = studentData[student].substr(lastDelimiter, studentData[student].find(delimiter, lastDelimiter) - lastDelimiter);
+
+			// Locate and save the delimiter for future loop
+			lastDelimiter = studentData[student].find(delimiter, lastDelimiter) + delimiter.length();
+
+			counter++;
+		};
+		// Catch the final line of information
+		studentArray[8] = studentData[student].substr(lastDelimiter);
+
+
+		classRosterArray[student] = new Student(
+			studentArray[0], // studentID
+			studentArray[1], // firstName
+			studentArray[2], // lastName
+			studentArray[3], // email
+			std::stoi(studentArray[4]), // age, cast to int
+			std::stoi(studentArray[5]), // courseTime1, cast to int
+			std::stoi(studentArray[6]), // courseTime2, cast to int
+			std::stoi(studentArray[7]), // courseTime3, cast to int
+			castToDegreeProgram(studentArray[8]) // degreeProgram, cast to enum DegreeProgram
+		);
+
+		classRosterArray[student]->print();
+	};
 };
 
 // Destructor
 Roster::~Roster() {
-
+	return;
 };
 
 void Roster::add(
@@ -76,4 +115,39 @@ void Roster::printInvalidEmails() {
 
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
 
+};
+
+// Helper functions
+	// Cast string into degreeProgram
+DegreeProgram Roster::castToDegreeProgram(std::string degreeString) {
+
+	if (degreeString == "SECURITY") {
+		return SECURITY;
+	}
+	else if (degreeString == "NETWORK") {
+		return NETWORK;
+	}
+	else if (degreeString == "SOFTWARE") {
+		return SOFTWARE;
+	}
+	else {
+		return UNDECLARED;
+	}
+
+};
+
+// Cast Degree Program to a string
+std::string Roster::castDegreeProgramToString(DegreeProgram degreeEnum) {
+	if (degreeEnum == SECURITY) {
+		return "SECURITY";
+	}
+	else if (degreeEnum == NETWORK) {
+		return "NETWORK";
+	}
+	else if (degreeEnum == SOFTWARE) {
+		return "SOFTWARE";
+	}
+	else {
+		return "UNDECLARED";
+	};
 };
