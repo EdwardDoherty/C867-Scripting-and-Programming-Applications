@@ -61,11 +61,6 @@ int main()
 
     classRoster->remove("A3");
 
-    // Demonstrate add() functionality. This wasn't in the requirements but I felt it was important
-    classRoster->add("A6", "New", "Student", "email@email.com", 27, 10, 10, 10, NETWORK);
-
-    classRoster->printByDegreeProgram(NETWORK);
-
     // F.5: Implement the destructor to release the memory that was allocated dynamically in Roster
     classRoster->~Roster();
     delete classRoster;
