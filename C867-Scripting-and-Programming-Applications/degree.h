@@ -3,5 +3,6 @@
 enum DegreeProgram {
 	SECURITY,
 	NETWORK,
-	SOFTWARE
+	SOFTWARE,
+	UNDECLARED
 };
