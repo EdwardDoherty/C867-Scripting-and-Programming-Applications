@@ -2,6 +2,7 @@
 #include <iostream>
 #include "student.h"
 #include "degree.h"
+#include "roster.h"
 
 
 // D.1 Variables of the student class:
@@ -48,6 +49,8 @@
 	DegreeProgram Student::getDegreeProgram() {
 		return degreeProgram;
 	};
+
+
 
 	// Setters
 	void Student::setStudentID(std::string newStudentID) {
@@ -105,8 +108,12 @@
 
 	// Destructor
 	Student::~Student() {
-		return;
+			return;
 	};
+
+	// Helper Functions
+	// 
+
 
 	// Print this student info
 	void Student::print() {
@@ -116,6 +123,6 @@
 			"\n Last Name: " << lastName <<
 			"\n Email Address: " << emailAddress <<
 			"\n Age: " << age <<
-			"\n Days in Course: " << daysPerCourseArray[0] << daysPerCourseArray[1] << daysPerCourseArray[2] <<
-			"\n Degree Program: " << degreeProgram;
+			"\n Days in Course: " << daysPerCourseArray[0] << ", " << daysPerCourseArray[1] << ", " << daysPerCourseArray[2] <<
+			"\n Degree Program: " << Roster::castDegreeProgramToString(degreeProgram) << std::endl;
 	};
