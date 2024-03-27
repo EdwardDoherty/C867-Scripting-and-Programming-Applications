@@ -32,7 +32,8 @@ int main()
         "\n WGU Student Name: " << WGUstudentName << std::endl;
 
 
-    Roster testRoster;
+    Roster* studentRoster = new Roster(5);
+
 
         //classRoster.printAll();
 

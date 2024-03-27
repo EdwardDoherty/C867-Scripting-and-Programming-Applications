@@ -7,10 +7,16 @@ class Roster {
 public:
 
 	// Constructor
-	Roster();
+	Roster(int rosterSize);
 
 	// Destructor
 	~Roster();
+
+    // Parse data
+    void parse();
+
+    // Parses a student data line (string) and returns a student object
+    Student* parseLine(std::string dataLine);
 
 	// E.3.a Add to classRosterArray
     void add(
@@ -41,7 +47,7 @@ public:
     // E.3.f Prints out student information for a degree program specified by the enum
     void printByDegreeProgram(DegreeProgram degreeProgram);
 
-    // Helper functions
+    // Cast enum DegreeProgram to String and vice-versa
     static std::string castDegreeProgramToString(DegreeProgram degreeEnum);
 
     static DegreeProgram castToDegreeProgram(std::string degreeString);
@@ -51,6 +57,7 @@ private:
 
 	// E.1 Create an array of pointers, classRosterArray, to hold the data provided in the "studentData Table"
 	Student* classRosterArray[5];
+    int rosterSize;
 
     // A. Modify the “studentData Table” to include your personal information as the last item.
     const std::string studentData[5] =

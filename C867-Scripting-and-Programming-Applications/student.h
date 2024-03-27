@@ -43,8 +43,6 @@ public:
 	// Print specific student info
 	void print();
 
-	// Helper functions
-
 
 private:
 	std::string studentID;
