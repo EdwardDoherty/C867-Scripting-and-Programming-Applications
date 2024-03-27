@@ -52,11 +52,9 @@ public:
 
     static DegreeProgram castToDegreeProgram(std::string degreeString);
 
+    // E.1 Create an array of pointers, classRosterArray, to hold the data provided in the "studentData Table"
+    Student* classRosterArray[5];
 
-private:
-
-	// E.1 Create an array of pointers, classRosterArray, to hold the data provided in the "studentData Table"
-	Student* classRosterArray[5];
     int rosterSize;
 
     // A. Modify the “studentData Table” to include your personal information as the last item.
