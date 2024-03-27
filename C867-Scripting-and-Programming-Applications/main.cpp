@@ -31,27 +31,52 @@ int main()
         "\n Programming Language Used: " << programmingLanguage <<
         "\n WGU Student ID: " << WGUstudentID <<
         "\n WGU Student Name: " << WGUstudentName << std::endl;
+    std::cout << std::endl;
+    std::cout << "--------------------------------------------" << std::endl;
 
-
+    // F.2 Create an instance of the Roster class called classRoster.
     Roster* classRoster = new Roster(5);
 
+    // F.3 Add each student to classRoster.
+    classRoster->parse();
+    
+    // F.4 printAll()
+    std::cout << "PRINT ALL: " << std::endl;
+    classRoster->printAll();
+    std::cout << "--------------------------------------------" << std::endl;
 
+    // F.4 printInvalidEmails()
+    std::cout << "PRINT INVALID EMAILS: " << std::endl;
+    classRoster->printInvalidEmails();
+    std::cout << "--------------------------------------------" << std::endl;
 
-        //classRoster.printAll();
+    // loop through classRosterArray and for each element printAverageDaysInCourse
+    std::cout << "PRINT AVERAGE DAYS IN COURSE: " << std::endl;
+    for (int i = 0; i < 5; i++) {
+        classRoster->printAverageDaysInCourse(classRoster->classRosterArray[i]->getStudentID());
+        // NOTE: For the current_objects's studentID, use an accessor (getter) for the classRosterArray to access the studentID
+    };
+    std::cout << "--------------------------------------------" << std::endl;
+    
+    std::cout << "PRINT SOFTWARE STUDENTS: " << std::endl;
+    classRoster->printByDegreeProgram(SOFTWARE);
+    std::cout << "--------------------------------------------" << std::endl;
 
-        //classRoster.printInvalidEmails();
+    std::cout << "REMOVE STUDENTID A3: " << std::endl;
+    classRoster->remove("A3");
+    std::cout << "--------------------------------------------" << std::endl;
 
-        // loop through classRosterArray and for each element:
-            //classRoster.printAverageDaysInCourse(/*current_object's student id*/);
-            // NOTE: For the current_objects's studentID, use an accessor (getter) for the classRosterArray to access the studentID
+    std::cout << "PRINT ALL: " << std::endl;
+    classRoster->printAll();
+    std::cout << "--------------------------------------------" << std::endl;
 
-        //classRoster.printByDegreeProgram(SOFTWARE);
-        //classRoster.remove("A3");
-        //classRoster.printerAll();
-        //classRoster.remove("A3");
-        // expected: the above line should print a message saying such a student with this ID was not found.
+    std::cout << "REMOVE STUDENTID A3 (FAILURE): " << std::endl;
+    classRoster->remove("A3");
+    std::cout << "--------------------------------------------" << std::endl;
 
-        // Implement the destructor to release the memory that was allocated dynamically in Roster
+    // Implement the destructor to release the memory that was allocated dynamically in Roster
+    classRoster->~Roster();
+    delete classRoster;
 
 };
 

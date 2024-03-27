@@ -126,4 +126,6 @@
 			"\n Age: " << age <<
 			"\n Days in Course: " << daysPerCourseArray[0] << ", " << daysPerCourseArray[1] << ", " << daysPerCourseArray[2] <<
 			"\n Degree Program: " << Roster::castDegreeProgramToString(degreeProgram) << std::endl;
+
+		std::cout << std::endl;
 	};
