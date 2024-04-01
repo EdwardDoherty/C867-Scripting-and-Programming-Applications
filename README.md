@@ -11,6 +11,8 @@ This project scored the highest score, "competent", on all 25 tasks, with the ex
 I did this project with very little experience in C++, so I was learning along the way, but I had a blast doing it. I got to solve the kinds of coding problems that I love to solve. the vast majority of my experience up to this point was in higher level interpreted languages (I've been working  as a front end dev for 1.5 years at time of writing) so it was fun to learn something at a lower level.
 
 
+Below is all course information for project requirements:
+
 
 <br>
 
