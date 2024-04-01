@@ -1,10 +1,14 @@
 # C867 Scripting and Programming Applications
 Coursework for  C867 Scripting and Programming Applications at WGU
 <br>
-This is the project where I will be creating the Performance Assessment for C867, Scripting and Programming Applications for my Bachelor's in Computer Science.
+This is my Performance Assessment for C867 - Scripting and Programming Applications, for my Bachelor's in Computer Science.
 <br>
-### This work is my own
-*-- Edward (Joseph) Doherty*
+
+
+This project scored the highest score, "competent", on all 25 tasks, with the examiner noting that all parts are well done. 
+
+
+I did this project with very little experience in C++, so I was learning along the way, but I had a blast doing it. I got to solve the kinds of coding problems that I love to solve. the vast majority of my experience up to this point was in higher level interpreted languages (I've been working  as a front end dev for 1.5 years at time of writing) so it was fun to learn something at a lower level.
 
 
 
